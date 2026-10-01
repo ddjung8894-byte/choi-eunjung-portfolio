@@ -249,3 +249,9 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 }
 @media(max-width:360px){.hero{grid-template-columns:minmax(0,1fr) 112px}.portrait{max-width:112px}.section-nav a{font-size:11px}.commercial-case .cover-title{font-size:15px}}
 @media print{.featured-project,.small-experiment,.archive-project{break-inside:avoid}.commercial-case .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Actual 2018 page excerpts share a frame; the full originals stay in the dialog. */
+.commercial-case .work-cover.image-cover{display:block;aspect-ratio:4/3;height:auto;padding:10px;background:#fff;border:1px solid var(--line);border-radius:8px}
+.commercial-case .image-cover img{width:100%;height:100%;object-fit:contain;object-position:center}
+.commercial-case .work-card:hover .image-cover,.commercial-case .work-card:focus-visible .image-cover{border-color:#aebfc9}
+@media(max-width:600px){.commercial-case .work-cover.image-cover{padding:7px;border-radius:6px}}
