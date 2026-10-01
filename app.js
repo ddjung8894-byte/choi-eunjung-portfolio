@@ -30,6 +30,21 @@ let previouslyFocused;
 const closeDialog = () => workDialog.close();
 document.querySelector('.close-dialog').addEventListener('click', closeDialog);
 workDialog.addEventListener('close', () => { previouslyFocused?.focus({ preventScroll: true }); });
+// Keep Tab / Shift+Tab inside the open image dialog; native Escape still closes it.
+workDialog.addEventListener('keydown', event => {
+  if (event.key !== 'Tab') return;
+  const controls = [...workDialog.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')]
+    .filter(element => element.getClientRects().length > 0);
+  const first = controls[0];
+  const last = controls[controls.length - 1];
+  if (!first) return;
+  const active = document.activeElement;
+  if (event.shiftKey && (active === first || !controls.includes(active))) {
+    event.preventDefault(); last.focus();
+  } else if (!event.shiftKey && (active === last || !controls.includes(active))) {
+    event.preventDefault(); first.focus();
+  }
+});
 workDialog.addEventListener('click', event => {
   if (event.target !== workDialog) return;
   const box = workDialog.getBoundingClientRect();
