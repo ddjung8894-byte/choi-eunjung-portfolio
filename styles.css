@@ -159,6 +159,8 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 .sample-heading{display:flex;gap:20px;align-items:baseline;justify-content:space-between;margin:8px 0 18px}
 .sample-heading h5{font-size:14px;font-weight:600;margin:0}
 .sample-heading p{color:var(--muted);font-size:12px}
+.sample-role{max-width:65ch;margin:0 0 22px;font-size:15px;line-height:1.75}
+.sample-role strong{font-weight:650}
 .commercial-case .work-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .commercial-case .project-cover{padding:16px;aspect-ratio:1.15/1;border-radius:8px}
 .commercial-case .cover-top{font-size:8px;letter-spacing:.04em}
