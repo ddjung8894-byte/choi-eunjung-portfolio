@@ -67,6 +67,65 @@ document.querySelectorAll('[data-work]').forEach(button => {
     workDialog.scrollTop = 0;
   });
 });
+// Keep video sources unset until an explicit click; closing aborts playback/downloads.
+const videoDialog = document.querySelector('#video-dialog');
+const portfolioVideo = document.querySelector('#portfolio-video');
+const videoClose = document.querySelector('.video-close');
+const videoError = document.querySelector('.video-error');
+let videoOpener;
+let videoSession = 0;
+
+const resetVideo = () => {
+  videoSession += 1;
+  portfolioVideo.pause();
+  portfolioVideo.removeAttribute('src');
+  portfolioVideo.removeAttribute('poster');
+  portfolioVideo.load();
+  videoError.hidden = true;
+  videoError.textContent = '';
+};
+document.querySelectorAll('[data-video]').forEach(button => {
+  button.addEventListener('click', () => {
+    resetVideo();
+    const session = videoSession;
+    videoOpener = button;
+    document.querySelector('#video-dialog-title').textContent = button.dataset.videoTitle;
+    document.querySelector('#video-dialog-description').textContent = button.dataset.videoDescription;
+    portfolioVideo.setAttribute('aria-label', button.dataset.videoTitle);
+    portfolioVideo.poster = button.dataset.poster;
+    portfolioVideo.src = button.dataset.video;
+    videoDialog.showModal();
+    videoDialog.scrollTop = 0;
+    videoClose.focus({ preventScroll: true });
+    portfolioVideo.play().catch(error => {
+      if (session !== videoSession || !videoDialog.open || error.name === 'AbortError') return;
+      videoError.textContent = error.name === 'NotAllowedError'
+        ? '영상의 재생 버튼을 눌러 주세요.'
+        : '영상을 불러오지 못했습니다. 창을 닫고 다시 재생해 주세요.';
+      videoError.hidden = false;
+    });
+  });
+});
+videoClose.addEventListener('click', () => videoDialog.close());
+videoDialog.addEventListener('close', () => {
+  resetVideo();
+  videoOpener?.focus({ preventScroll: true });
+});
+// Native dialog contains keyboard focus, including the video's native controls.
+videoDialog.addEventListener('click', event => {
+  if (event.target !== videoDialog) return;
+  const bounds = videoDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) videoDialog.close();
+});
+portfolioVideo.addEventListener('error', () => {
+  if (!videoDialog.open || !portfolioVideo.hasAttribute('src')) return;
+  videoError.textContent = '영상을 불러오지 못했습니다. 창을 닫고 다시 재생해 주세요.';
+  videoError.hidden = false;
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && videoDialog.open) portfolioVideo.pause();
+});
+
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 const hero = document.querySelector('.hero');
