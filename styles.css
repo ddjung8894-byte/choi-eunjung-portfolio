@@ -127,7 +127,12 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 .featured-project .eyebrow{color:var(--muted);letter-spacing:.02em;font-size:12px}
 .project-subtitle{font-size:14px;color:var(--muted);margin-top:6px}
 .project-concept{font-size:17px;line-height:1.8;margin-top:22px}
-.project-status{display:inline-block;margin-top:25px;padding:5px 10px;border:1px solid var(--line);border-radius:4px;background:#fff;font-size:12px}
+.game-link{position:relative;display:inline-flex;align-items:center;gap:18px;min-height:44px;margin-top:25px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px;font-weight:600;line-height:1.5;text-decoration:none;color:var(--ink)}
+.game-link::after{content:"";position:absolute;right:0;bottom:-1px;left:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.game-link svg{width:17px;height:17px;flex-shrink:0;transition:transform .22s ease}
+.game-link:hover::after,.game-link:focus-visible::after{transform:scaleX(1)}
+.game-link:hover svg,.game-link:focus-visible svg{transform:translate(3px,-3px)}
+.game-link[aria-disabled="true"]{cursor:default}
 .project-facts{display:grid;gap:16px;line-height:1.75}
 .project-facts>div{display:grid;gap:5px}
 .project-facts dt{font-size:12px;color:var(--muted)}
@@ -182,6 +187,11 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 .archive-project>div>p:not(.eyebrow):not(.archive-kind){font-size:15px;max-width:58ch}
 .archive-project .archive-award{margin-top:20px}
 .archive-award span{font-size:12px;color:var(--muted)}
+.archive-stills{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+.archive-stills figure{min-width:0}
+.archive-stills img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:6px;background:var(--soft)}
+.archive-stills figcaption{margin-top:9px;font-size:12px;line-height:1.7;color:var(--muted)}
+.archive-project>div.archive-stills>p:not(.eyebrow):not(.archive-kind){grid-column:1/-1;margin:0;max-width:none;font-size:12px;color:var(--muted)}
 .hello-replay,.motion-toggle{min-height:44px}
 .close-dialog{min-height:44px}
 @media(max-width:1024px){
@@ -212,7 +222,7 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
   .featured-project .eyebrow{font-size:11px}
   .project-concept{font-size:16px;margin-top:18px}
   .project-concept br{display:none}
-  .project-status{margin-top:19px}
+  .game-link{margin-top:19px}
   .featured-process .project-facts{grid-template-columns:1fr;gap:17px}
   .project-facts dd{font-size:15px}
   .project-tool-note{font-size:12px}
@@ -243,6 +253,7 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
   .commercial-case .promotion-strip .outline-button{min-height:44px}
   .archive-project{margin-top:32px;padding-top:28px;gap:20px}
   .archive-project h3{font-size:21px}
+  .archive-stills{grid-template-columns:1fr;gap:22px}
   .archive-section .background-record{gap:16px}
   .hero-intro{font-size:14px;line-height:1.75}
   .hero{grid-template-columns:minmax(0,1fr) 128px}
@@ -267,10 +278,13 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 .video-play svg{width:20px;height:20px}
 .video-launch:hover .video-play,.video-launch:focus-visible .video-play{background:var(--ink);border-color:var(--accent)}
 .video-duration{position:absolute;bottom:10px;right:10px;padding:3px 7px;border-radius:3px;background:rgba(37,52,63,.9);color:#fff;font-size:11px;font-variant-numeric:tabular-nums}
-.devlog-strip{grid-column:1/-1;display:grid;grid-template-columns:100px minmax(0,1fr);align-items:center;gap:25px;border-top:1px solid var(--line);padding-top:24px}
+.project-videos{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,256fr) minmax(0,81fr);align-items:start;gap:24px;border-top:1px solid var(--line);padding-top:28px}
+.trailer-card,.devlog-card{min-width:0}
+.trailer-thumbnail{aspect-ratio:16/9}
 .devlog-thumbnail .video-play{padding:7px;min-width:44px;justify-content:center}.devlog-thumbnail .video-play>span{display:none}
-.devlog-copy h5{font-size:20px;line-height:1.5;margin:5px 0 8px;font-weight:650;letter-spacing:-.03em}
-.devlog-copy>p:not(.eyebrow){max-width:46ch;font-size:15px;line-height:1.75}.devlog-copy>span{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
+.project-video-copy{margin-top:15px}
+.project-video-copy h5{font-size:18px;line-height:1.5;margin:5px 0 8px;font-weight:650;letter-spacing:-.03em}
+.project-video-copy>p:not(.eyebrow){font-size:13px;line-height:1.7;color:var(--muted)}
 .shorts-project{margin-top:64px;padding-top:36px;border-top:1px solid var(--line)}
 .shorts-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:56px;align-items:start}
 .shorts-intro{padding-top:10px}.shorts-intro h4{margin:0;font-size:28px;font-weight:650;letter-spacing:-.04em;line-height:1.4}
@@ -279,17 +293,20 @@ html{scroll-padding-top:calc(var(--navigation-height,66px) + 24px)}
 .shorts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .short-card{min-width:0}.short-card h5{margin:13px 0 6px;font-size:17px;line-height:1.55;font-weight:650;letter-spacing:-.03em}
 .short-card>p{font-size:13px;line-height:1.7;color:var(--muted)}
-.skill-card--video{grid-column:1/-1;display:grid;grid-template-columns:66px minmax(0,1fr);column-gap:26px}
-.skill-card--video .skill-icon{grid-row:1/4;margin:0}.skill-card--video p{max-width:none;margin-bottom:16px}.skill-card--video .skill-tools{margin-top:0}
+@media(min-width:901px){.skill-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.skill-card{grid-column:span 2}.skill-card:nth-child(n+4){grid-column:span 3}}
+@media(min-width:681px) and (max-width:900px){.skill-card:last-child{grid-column:1/-1}}
 .video-dialog{width:min(540px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:20px;border:0;border-radius:10px;color:var(--ink);background:#fff;overscroll-behavior:contain}
+.video-dialog--landscape{width:min(1000px,calc(100% - 32px))}
 .video-dialog::backdrop{background:rgba(20,30,39,.8)}
 .video-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}.video-dialog-heading h2{margin:0;font-size:17px;line-height:1.5;font-weight:650}
 .video-close{display:flex;align-items:center;gap:8px;flex-shrink:0;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:4px;background:#fff;font-size:13px}.video-close span{font-size:22px;line-height:1}
 #portfolio-video{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 240px);aspect-ratio:9/16;margin-inline:auto;background:#000;border-radius:4px}
+.video-dialog--landscape #portfolio-video{width:100%;aspect-ratio:16/9;object-fit:contain}
 #portfolio-video:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .video-dialog-description,.video-error{font-size:12px;line-height:1.7;margin:14px 0 0;color:var(--muted)}
 .video-error{color:var(--ink)}
 @media(max-width:900px){.shorts-layout{gap:32px}.shorts-grid{gap:18px}.shorts-intro h4{font-size:25px}}
 @media(max-width:768px){.shorts-layout{grid-template-columns:1fr;gap:28px}.shorts-intro{padding:0}.shorts-intro>p:not(.project-tool-note):not(.section-note){max-width:45ch}.shorts-grid{max-width:560px;width:100%}.shorts-intro .project-facts{margin-top:20px}}
-@media(max-width:600px){.devlog-strip{grid-template-columns:84px minmax(0,1fr);gap:16px;padding-top:20px}.devlog-copy h5{font-size:17px}.devlog-copy>p:not(.eyebrow){font-size:13px}.devlog-copy>span{font-size:11px}.shorts-project{margin-top:42px;padding-top:28px}.shorts-grid{gap:16px}.short-card h5{font-size:16px}.short-card>p{font-size:12px}.skill-card--video{display:flex}.skill-card--video .skill-icon{margin-bottom:19px}.video-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 20px);padding:14px}.video-dialog-heading h2{font-size:15px}#portfolio-video{max-height:calc(100dvh - 225px)}}
-@media print{.video-play,.video-duration,.video-dialog{display:none}.shorts-project,.devlog-strip{break-inside:avoid}.shorts-grid{max-width:320px}.skill-card--video{grid-column:auto;display:flex}}
+@media(max-width:680px){.project-videos{grid-template-columns:1fr;gap:28px;padding-top:20px}.devlog-card{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:18px}.devlog-card .project-video-copy{margin:0}.project-video-copy h5{font-size:17px}}
+@media(max-width:600px){.shorts-project{margin-top:42px;padding-top:28px}.shorts-grid{gap:16px}.short-card h5{font-size:16px}.short-card>p{font-size:12px}.video-dialog{width:calc(100% - 20px);max-height:calc(100dvh - 20px);padding:14px}.video-dialog-heading h2{font-size:15px}#portfolio-video{max-height:calc(100dvh - 225px)}}
+@media print{.video-play,.video-duration,.video-dialog{display:none}.shorts-project,.project-videos{break-inside:avoid}.shorts-grid{max-width:320px}.skill-grid{grid-template-columns:1fr 1fr}.skill-card,.skill-card:nth-child(n+4){grid-column:auto}}

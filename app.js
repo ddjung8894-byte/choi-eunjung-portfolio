@@ -89,6 +89,7 @@ document.querySelectorAll('[data-video]').forEach(button => {
     resetVideo();
     const session = videoSession;
     videoOpener = button;
+    videoDialog.classList.toggle('video-dialog--landscape', button.dataset.videoLayout === 'landscape');
     document.querySelector('#video-dialog-title').textContent = button.dataset.videoTitle;
     document.querySelector('#video-dialog-description').textContent = button.dataset.videoDescription;
     portfolioVideo.setAttribute('aria-label', button.dataset.videoTitle);
