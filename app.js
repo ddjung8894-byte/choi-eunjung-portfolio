@@ -25,6 +25,17 @@ const updateNavigationSize = () => {
 new ResizeObserver(updateNavigationSize).observe(navigationShell);
 updateNavigationSize();
 
+// Evidence links reveal the matching career entry without replacing native anchors.
+const revealCareer = hash => {
+  const target = document.getElementById(hash.slice(1));
+  if (target?.matches('details.career-row')) target.open = true;
+};
+document.querySelectorAll('.skill-links a[href^="#career-"]').forEach(link => {
+  link.addEventListener('click', () => revealCareer(link.hash));
+});
+window.addEventListener('hashchange', () => revealCareer(window.location.hash));
+revealCareer(window.location.hash);
+
 const workDialog = document.querySelector('#work-dialog');
 let previouslyFocused;
 const closeDialog = () => workDialog.close();
