@@ -23,6 +23,20 @@
     processObserver.observe(processMap);
   }
 
+  /* 타이거스톤의 제목·작업 이미지는 화면 진입 시 한 번만 가볍게 등장한다. */
+  const tigerstoneCase = $('.tigerstone-case');
+  if (tigerstoneCase && 'IntersectionObserver' in window) {
+    const caseObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('case-revealed');
+        caseObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -20px 0px' });
+    $$('.case-hero h1, .case-hero .lede, .cover, .meta, .block h2, .cols3 > div, .split > div, .pair figure, .shot, .vid', tigerstoneCase)
+      .forEach(element => caseObserver.observe(element));
+  }
+
   /* 주소의 #c-... 로 들어오면 해당 경력 행(과 그것을 감싼 접힘 목록)을 펼친다 */
   const openDetails = id => {
     let el = document.getElementById(id);
