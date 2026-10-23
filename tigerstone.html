@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F3F4F7">
+<meta name="description" content="AI를 활용해 1인 개발하고 STOVE에 출시한 게임 타이거스톤의 기획 의도, 시스템 설계, 리뉴얼 과정.">
+<title>타이거스톤 | 최은정 포트폴리오</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%233447F0'/%3E%3Ctext%20x='13'%20y='46'%20font-family='Arial'%20font-size='38'%20font-weight='700'%20fill='%23FBFCFD'%3Ee.%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="site.css?v=20261023w">
+<script src="site.js?v=20261023w" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header">
+<div class="wrap top">
+  <a class="wordmark" href="index.html" aria-label="최은정, 처음으로">최은정</a>
+  <nav aria-label="페이지 메뉴"><a href="index.html#work">작업</a><a href="index.html#career">경력</a><a class="cta" href="index.html#contact">연락하기</a></nav>
+</div>
+</header>
+
+<main id="main">
+<div class="wrap case-hero">
+  <a class="back" href="index.html#work">작업 목록으로</a>
+  <div class="tags" style="margin-top:16px"><span class="tag hl">AI 활용 1인 개발</span><span class="tag">게임 기획</span><span class="tag">STOVE 출시</span></div>
+  <h1>타이거스톤</h1>
+  <p class="lede">자동화 물류센터에서 계약직 노동자로 30일을 보내는 생존 시뮬레이션. AI 도구로 만들고, 기획과 판단은 직접 했습니다.</p>
+  <div class="btns" style="margin-bottom:40px"><a class="btn solid" href="https://store.onstove.com/ko/games/105848" target="_blank" rel="noopener noreferrer" aria-label="타이거스톤 STOVE 게임 페이지, 새 탭">STOVE 게임 페이지</a></div>
+  <div class="cover"><img src="assets/tigerstone-key.webp" alt="자동화 물류센터를 배경으로 다섯 캐릭터와 TIGER STONE 제목이 있는 타이거스톤 대표 이미지" width="1280" height="720" fetchpriority="high"></div>
+  <dl class="meta">
+    <div><dt>담당</dt><dd>기획, 시스템 설계, 콘텐츠 구성, UI 개선, 구현, QA</dd></div>
+    <div><dt>도구</dt><dd>개발: Godot, VS Code, Codex<br>기획 마무리·검수: Claude<br>이미지·영상: ChatGPT, Seedance</dd></div>
+    <div><dt>출시</dt><dd>STOVE 정가 4,500원 출시, 이후 전면 리뉴얼해 재출시</dd></div>
+  </dl>
+</div>
+
+<section class="block" aria-labelledby="why-t">
+<div class="wrap">
+  <h2 id="why-t">기획부터 출시까지</h2>
+  <p class="lead" style="color:var(--steel)">물류센터 업무와 퇴근 후 생활을 하나의 플레이 흐름으로 연결했습니다.</p>
+  <div class="cols3">
+    <div><h3>왜 만들었나</h3><ul><li>취업이 쉽지 않던 시기에 물류센터에서 일하며, 시간과 돈을 맞바꾸는 노동과 그 안에서 느낀 감정을 게임으로 체험하게 해 보고 싶었습니다.</li></ul></div>
+    <div><h3>무엇을 설계했나</h3><ul>
+      <li>자동화된 근미래 물류센터에서 30일간 계약직으로 살아남는 노동·생활 시뮬레이션 구조</li>
+      <li>입고·출고·허브 미니게임에 할당량, 업무 실적, 현장 선택, 체력·멘탈·피로·급여·회사 평가를 연동</li>
+      <li>퇴근 후 소비와 생활 관리, 동료 관계, 누적된 선택에 따라 달라지는 다중 엔딩</li></ul></div>
+    <div><h3>출시까지의 결정</h3><ul>
+      <li>단순 물류 작업 게임에서 벗어나, 노동의 압박·생계·인간관계를 다루는 30일 생존 시뮬레이션으로 발전시켰습니다.</li>
+      <li>별도 데모 대신 본편 출시를 선택했습니다.</li>
+      <li>제작 범위를 조정하고 오류를 수정해 STOVE에 출시했습니다.</li></ul></div>
+  </div>
+</div>
+</section>
+
+<section class="block dark" aria-labelledby="ai-t">
+<div class="wrap">
+  <h2 id="ai-t">AI에 맡긴 일, 직접 한 일</h2>
+  <p class="lead">AI를 적극 활용하되 기획, 시스템 설계, 밸런스, 그래픽 방향은 직접 결정하고, 반복적인 수정과 검증을 거쳐 완성했습니다.</p>
+  <div class="split">
+    <div><h3>AI에게 맡긴 일</h3><ul><li>코드 작성: VS Code에서 시작해 대부분 Codex로 작업</li><li>기획 마무리와 검수: Claude</li><li>이미지·영상 생성: ChatGPT, Seedance</li></ul></div>
+    <div class="me"><h3>내가 직접 한 일</h3><ul><li>게임 기획과 세계관, 30일 구조</li><li>시스템 설계와 밸런스</li><li>그래픽 방향 결정과 리뉴얼</li><li>반복 검증과 QA, 출시 결정</li></ul></div>
+  </div>
+</div>
+</section>
+
+<section class="block dark" style="padding-top:0" aria-labelledby="renewal-t">
+<div class="wrap">
+  <h2 id="renewal-t">리뉴얼: 그래픽을 통일하고 출근 과정을 더했습니다</h2>
+  <p class="lead">전체 그래픽을 바꿔 화면마다 통일감을 높였고, 출근 과정을 더 실감 나게 표현하려고 출근 게이트를 추가했습니다. 버그도 수정했습니다. 변화가 가장 큰 미니게임부터 비교합니다.</p>
+  <h3 class="pair-title">입고 미니게임</h3>
+  <div class="pair">
+    <figure><img src="assets/tigerstone-before-inbound.webp" alt="리뉴얼 전 입고 미니게임: 회색 금속 작업대 위 주황 상자 속 과자 봉지를 정상 통과, 라벨 보정, 파손 격리 버튼으로 판정하는 화면" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 전</b> 금속 작업대 위에서 버튼 세 개로 상품 상태를 판정</figcaption></figure>
+    <figure><img src="assets/tigerstone-after-inbound.webp" alt="리뉴얼 후 입고 미니게임: 밝은 작업대에서 스캐너로 마우스 상자의 바코드를 찍고 정상 상품 참고 화면과 비교하는 모습" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 후</b> 스캐너로 바코드를 찍고, 정상 상품과 비교해 훼손 여부를 확인</figcaption></figure>
+  </div>
+  <h3 class="pair-title">허브 미니게임</h3>
+  <div class="pair">
+    <figure><img src="assets/tigerstone-before-hub.webp" alt="리뉴얼 전 허브 미니게임: 실사풍 창고 배경의 흰 작업대 위 주황 팔레트에 상자를 쌓은 화면" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 전</b> 실사풍 배경 위 작업대에서 상자를 쌓는 화면</figcaption></figure>
+    <figure><img src="assets/tigerstone-after-hub.webp" alt="리뉴얼 후 허브 미니게임: 컨베이어에서 내려온 상자를 팔레트에 쌓고 랩으로 감싸는 화면" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 후</b> 컨베이어, 팔레트 적재, 랩핑까지 한 화면에서 진행</figcaption></figure>
+  </div>
+  <h3 class="pair-title">대화와 저녁 화면</h3>
+  <div class="pair">
+    <figure><img src="assets/tigerstone-before-dialog.webp" alt="리뉴얼 전 대화 장면: 밝고 투명한 대화창에 나잘난이 말하는 모습" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 전</b> 밝은 배경 위에 투명한 대화창</figcaption></figure>
+    <figure><img src="assets/tigerstone-after-dialog.webp" alt="리뉴얼 후 대화 장면: 어두운 대화창과 선택지 세 개가 있는 나잘난 장면" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 후</b> 어두운 패널과 선택지로 통일한 대화 화면</figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="assets/tigerstone-before-home.webp" alt="리뉴얼 전 저녁 화면: 방 배경 위에 상태 수치와 오늘을 마친다 버튼" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 전</b> 저녁 루틴과 상태 수치 화면</figcaption></figure>
+    <figure><img src="assets/tigerstone-after-home.webp" alt="리뉴얼 후 저녁 화면: 남은 저녁 시간 패널에서 생활 행동을 고르는 모습" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b>리뉴얼 후</b> 남은 저녁 시간과 생활 행동을 한 패널로 정리</figcaption></figure>
+  </div>
+  <figure class="shot"><img src="assets/tigerstone-gate.webp" alt="리뉴얼에서 추가한 출근 게이트: 오늘 배정 허브가 표시된 전광판과 사원증 인식 게이트" width="1280" height="720" loading="lazy" decoding="async"><figcaption><b style="color:var(--hl)">새로 추가</b> 출근 게이트. 오늘의 배정 공정을 확인하고 사원증을 찍은 뒤 입장합니다.</figcaption></figure>
+</div>
+</section>
+
+<section class="block" aria-labelledby="video-t">
+<div class="wrap">
+  <h2 id="video-t">영상</h2>
+  <p class="lead" style="color:var(--steel)">트레일러와 개발기도 직접 편집했습니다. 누르면 이 페이지에서 재생됩니다.</p>
+  <div class="videos">
+    <div class="vid">
+      <button class="video-launch" type="button" data-video="assets/tigerstone-trailer-rc13.mp4" data-poster="assets/tigerstone-trailer-rc13-poster.webp" data-title="타이거스톤 공식 트레일러 (리뉴얼 버전)" data-description="리뉴얼 버전으로 새로 만든 트레일러입니다. 허브·입고 업무와 퇴근 후 생활, 함께 일하는 동료, 30일 계약이 끝난 뒤의 기록까지 담았습니다. 영상 내 한글 자막이 포함되어 있습니다." aria-haspopup="dialog" aria-label="타이거스톤 리뉴얼 버전 공식 트레일러 재생, 40초">
+        <img src="assets/tigerstone-trailer-rc13-poster.webp" alt="통근 버스 창밖으로 물류센터가 보이고, 당신에게 주어진 계약 기간 30일이라는 자막이 뜬 트레일러 장면" width="960" height="540" loading="lazy" decoding="async">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg>0:40</span>
+      </button>
+      <h3>공식 트레일러</h3><p>리뉴얼 버전 플레이 소개, 40초</p>
+    </div>
+    <div class="vid tall">
+      <button class="video-launch" type="button" data-video="assets/tigerstone-devlog.mp4" data-poster="assets/tigerstone-devlog-poster.webp" data-title="타이거스톤 개발기: 세계관이 만들어진 과정" data-description="아이디어가 게임 세계관으로 이어지는 과정을 담은 직접 제작한 개발 기록입니다. 영상 내 한글 자막이 포함되어 있습니다." aria-haspopup="dialog" aria-label="타이거스톤 개발기 영상 재생, 39초">
+        <img src="assets/tigerstone-devlog-poster.webp" alt="대파에서 게임 세계관을 떠올리는 과정을 담은 개발기 장면" width="360" height="640" loading="lazy" decoding="async">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg>0:39</span>
+      </button>
+      <h3>개발기</h3><p>세계관 제작 과정, 39초</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="wrap next"><p>다음 작업: 칼이쓰마 상세페이지</p><a class="btn solid" href="kalesma.html">다음 작업 보기</a></div>
+</main>
+<footer class="foot" style="padding-top:8px"><div class="wrap"><p>© 2026 최은정</p></div></footer>
+
+<dialog id="video-dialog" aria-labelledby="video-dialog-title" aria-describedby="video-dialog-description">
+  <div class="dlg-head"><h2 id="video-dialog-title"></h2><button class="dlg-close" type="button" aria-label="영상 닫기" autofocus>닫기</button></div>
+  <video id="portfolio-video" controls playsinline preload="none" aria-label="선택한 포트폴리오 영상">브라우저에서 영상 재생을 지원하지 않습니다.</video>
+  <p class="video-error" role="status" hidden></p>
+  <p class="dlg-desc" id="video-dialog-description" style="padding-top:12px"></p>
+</dialog>
+</body>
+</html>
