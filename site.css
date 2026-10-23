@@ -312,6 +312,10 @@ dialog[open]::backdrop{transition:opacity var(--t-move) var(--ease)}
 @media(prefers-reduced-motion:no-preference){
   /* press feedback */
   .btn:active,.top nav a:active,.dlg-close:active{transform:scale(.97)}
+  /* the card link's ::after covers the whole card; scaling the link on press would shrink that
+     hit area to the button and cancel clicks elsewhere on the card, so the card presses instead */
+  .btn.card-link:active{transform:none}
+  .card:has(.card-link:active){transform:scale(.99)}
   @starting-style{dialog[open]{transform:scale(.97)}}
   .rows details[open]>.more{animation-name:reveal-move}
   @keyframes reveal-move{from{opacity:0;transform:translateY(-4px)}}
@@ -334,6 +338,7 @@ dialog[open]::backdrop{transition:opacity var(--t-move) var(--ease)}
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
   .sheet:hover{transform:rotate(0deg)}
   .cards>.card:hover,.apps>.app:hover{transform:translateY(-4px)}
+  .cards>.card:hover:has(.card-link:active){transform:translateY(-4px) scale(.99)}
   .video-launch:hover,.sample:hover{transform:translateY(-2px)}
 }
 
